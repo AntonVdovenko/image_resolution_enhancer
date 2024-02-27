@@ -6,10 +6,17 @@ from PIL import Image
 from waifu2x import run
 
 
-def upscale_image(input_img_path: str, output_img_path: str):
+def upscale_image(input_img_path: str, output_img_path: str) -> None:
     """
     Upscales an image from the input_img_path and saves the upscaled
     image to the output_img_path.
+
+    Parameters
+    ----------
+    input_img_path : str
+        input image path string
+    output_img_path : str
+        output upscaled image path string
     """
     run(input_img_path, output_img_path)
 
