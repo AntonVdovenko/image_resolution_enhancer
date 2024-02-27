@@ -9,14 +9,20 @@ RUN apt-get update && \
     apt-get update && \
     apt-get install -y --no-install-recommends \
     python3.10 \
-    python3-pip \
+    python3.10-venv \
     python3.10-dev \
+    python3.10-distutils \
     build-essential \
     && rm -rf /var/lib/apt/lists/*
 
-# Update pip and install Poetry
-RUN python3.10 -m pip install --upgrade pip && \
+# Create and activate a virtual environment
+RUN python3.10 -m venv /venv
+ENV PATH="/venv/bin:$PATH"
+
+# Upgrade pip and install Poetry
+RUN pip install --upgrade pip && \
     pip install poetry
+
 
 # Set the working directory
 WORKDIR /app
