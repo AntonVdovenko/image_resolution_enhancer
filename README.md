@@ -1,4 +1,5 @@
 # Image Upscaling Service
+Simple app to enhance image resolution
 
 ## Tools used in this project
 * [waifu2x](https://github.com/nagadomi/waifu2x)
@@ -38,3 +39,19 @@ To install new PyPI packages, run:
 poetry add <package-name>
 ```
 
+## Docker Instructions
+
+Navigate to the project directory
+```bash
+cd image_resolution_enhancer
+```
+
+Build the Docker image
+```bash
+docker build -t streamlit-image-upscale .
+```
+
+Run the Docker container with CUDA support and mount the data directory
+```bash
+docker run --gpus all -p 8501:8501 -v $(pwd)/data:/app/data streamlit-image-upscale
+```
